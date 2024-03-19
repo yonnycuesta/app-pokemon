@@ -12,7 +12,4 @@ import { CommonModule } from '@angular/common';
 export class ImagePokemonComponent {
 
   @Input() pokemon?: Pokemon;
-
-  
-
 }

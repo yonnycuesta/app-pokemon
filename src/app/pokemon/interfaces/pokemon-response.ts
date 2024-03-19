@@ -8,5 +8,12 @@ export interface PokemonResponse {
 export interface PokemonResult {
   name: string;
   url: string;
+  types: string[];
+  abilities: string[];
+  species: Species;
 }
 
+export interface Species {
+  name: string;
+  url: string;
+}

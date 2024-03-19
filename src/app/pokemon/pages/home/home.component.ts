@@ -8,6 +8,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
+import { PokemonType } from '../../interfaces/pokemon-type';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -24,16 +25,15 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent implements OnInit {
 
-  pokemons: any[] = [];
+  pokemons: PokemonResult[] = [];
   page: number = 0;
   totalPokemons?: number;
   pokemonSelected?: Pokemon;
   // Filters
-  filteredPokemons: any[] = [];
+  filteredPokemons: PokemonResult[] = [];
   searchParam: string = '';
   showFilters: boolean = false;
   pokeTypes: any;
-  generations: any;
   selectedType: any;
 
   constructor(private readonly pokemonService: PokemonService) {
@@ -42,6 +42,14 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getPokemonLists();
     this.getPokemonByName('bulbasaur');
+    this.getTypes();
+  }
+
+  /**
+   * Get Pokemons Types
+   */
+
+  public getTypes() {
     this.pokemonService.getTypes().subscribe({
       next: (response) => {
         this.pokeTypes = response;
@@ -51,6 +59,7 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+  // TODO: Obtener la lista de pokemones.
   public getPokemonLists() {
     if (this.searchParam == '') {
       this.pokemonService.getPokemons(7, this.page).subscribe({
@@ -64,16 +73,15 @@ export class HomeComponent implements OnInit {
                 pokemon.types = resp.types.map((t: any) => t.type.name);
                 pokemon.abilities = resp.abilities.map((a: any) => a.ability.name);
                 pokemon.species = resp.species;
-                pokemon.moves = resp.moves;
               },
               error: (error) => {
-                console.log(error);
+                console.log('getPokemonLists', error);
               }
             });
           });
         },
         error: (error) => {
-          console.log(error);
+          console.log('getPokemonLists', error);
         }
       });
     } else {
@@ -89,7 +97,7 @@ export class HomeComponent implements OnInit {
         this.pokemonSelected = response;
       },
       error: (error) => {
-        console.log(error);
+        console.log('getPokemonByName', error);
       }
     });
   }
@@ -99,18 +107,15 @@ export class HomeComponent implements OnInit {
   }
 
 
-  // TODO: Filtrar por tipo, habilidad o generación.
-  /**
-   *
-   */
+  // TODO: Filtrar por tipo.
   public filterByType(type: string) {
-    this.filteredPokemons = this.pokemons.filter((pokemon) => {
+    this.filteredPokemons = this.pokemons.filter((pokemon: any) => {
       if (pokemon) {
         return pokemon.types.includes(type);
       }
     });
   }
-
+  // TODO: Filtrar por nombre y habilidad.
   public filterByAny() {
     this.filteredPokemons = this.pokemons.filter((pokemon) => {
       return pokemon.name.includes(this.searchParam.toLowerCase())
@@ -119,7 +124,8 @@ export class HomeComponent implements OnInit {
   }
 
 
-  public resetFilters() {
+
+  public resetFilters() { // Eliminar filtros.
     this.searchParam = '';
     this.selectedType = '';
     this.filteredPokemons = this.pokemons;

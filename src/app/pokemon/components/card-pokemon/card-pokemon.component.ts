@@ -21,9 +21,7 @@ export class CardPokemonComponent implements OnChanges {
     this.getInfo();
   }
 
-
   getInfo() {
     this.id = this.pData?.url.split('/')[6] || '0';
   }
-
 }
