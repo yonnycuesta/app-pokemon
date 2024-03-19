@@ -19,7 +19,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Ejecución -  Servidor de desarrollo
 
-Para ejecutar el servidor de desarrollo, utiliza el siguiente comando:
+Para ejecutar el servidor de desarrollo, utiliza el siguiente comando: `ng serve`
 Luego, abre `http://localhost:4200/` en tu navegador para ver la aplicación.
 
 ## Code scaffolding
