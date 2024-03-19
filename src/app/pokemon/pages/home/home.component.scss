@@ -1,0 +1,37 @@
+#container{
+  height: calc(100vh - 110px);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+}
+
+
+
+.card_item{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+pagination-controls{
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+.item_type{
+  display: block;
+  font-size: 15px;
+}
+
+.filters{
+  border: 1px solid #28c17c;
+}
+
+label{
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 1px;
+}
+.type{
+  margin-left: 2px;
+}

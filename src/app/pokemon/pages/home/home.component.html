@@ -1,0 +1,67 @@
+<main id="container">
+  <app-image-pokemon [pokemon]="pokemonSelected" />
+  <!--Filters-->
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group my-2 d-flex">
+          <button class="border-0 bg-white d-flex justify-content-center align-items-center align-content-center"
+            (click)="showFilters = !showFilters">
+            <i class="fas fa-filter mr-1"></i>
+            Filtrar
+          </button>
+          <div class="w-100">
+            <input type="text" class="form-control rounded-4 border-success" id="filter" [(ngModel)]="searchParam"
+              placeholder="Buscar nombre o habilidad del pokemon" (input)="getPokemonLists()" />
+          </div>
+        </div>
+      </div>
+      <div class="col-12 d-flex">
+        @if (showFilters) {
+        <div>
+          <ul class="list-group d-block filters">
+            <!-- <li class="list-group-item">
+              <label for="generation" class="col-2">Generación:</label>
+              <select class="form-control col-4" id="generation">
+                <option value="0">Todas</option>
+                <option *ngFor="let gen of generations" [value]="gen.id">{{gen.name}}</option>
+              </select>
+            </li> -->
+            <li class="list-group-item item_type">
+              <label for="type" class="col-2">Tipo:</label>
+              @for (t of pokeTypes; track t.id) {
+              <p class="d-flex justify-content-start">
+                <input type="radio" class="rounded-2" id="type" name="type" [value]="t.id" [(ngModel)]="selectedType"
+                  (change)="filterByType(selectedType)" />
+                <span class="type">{{t.name}}</span>
+              </p>
+              }
+            </li>
+            <li class="list-group-item block">
+              <button class="btn btn-reset border border-2" (click)="resetFilters()">
+                Reiniciar
+              </button>
+            </li>
+          </ul>
+        </div>
+        }
+        @if (filteredPokemons.length > 0) {
+        <div class="container card_item">
+          @for (pokemon of filteredPokemons | paginate: {itemsPerPage: 7, currentPage: page, totalItems: totalPokemons};
+          track
+          pokemon.name) {
+          <app-card-pokemon [pData]="pokemon" (onSelected)="getSelected($event)"
+            [cSelected]="pokemon.name === pokemonSelected?.name" />
+          }
+          <pagination-controls (pageChange)="page = $event; filteredPokemons = []; getPokemonLists()"
+            previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+        </div>
+        }@else {
+        <p>
+          Pokemon no encontrado.
+        </p>
+        }
+      </div>
+    </div>
+  </div>
+</main>

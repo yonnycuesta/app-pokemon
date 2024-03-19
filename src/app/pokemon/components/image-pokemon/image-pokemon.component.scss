@@ -1,0 +1,25 @@
+.img_container {
+  border: 3px solid #28c17c;
+  max-width: 400px;
+  aspect-ratio: 1;
+  border-radius: 25px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+.list-group .list-group-item{
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  font-size: 15px;
+}
+
+.font-bold{
+  font-weight: 500;
+}

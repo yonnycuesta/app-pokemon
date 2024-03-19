@@ -1,0 +1,11 @@
+<ul class="list-group" [ngClass]="{cSelected: cSelected}">
+  <li class="list-group-item" (click)="onSelected.emit(pData?.name)">
+    <div class="circle"></div>
+    <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{id}}.png' alt="Image">
+    <span>No. {{id}}</span>
+    @if (pData) {
+    <span>{{pData.name | titlecase }}</span>
+    }
+  </li>
+
+</ul>

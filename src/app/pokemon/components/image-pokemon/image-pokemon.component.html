@@ -1,0 +1,18 @@
+<div class="container img_container">
+  <img src="{{pokemon?.sprites?.front_default}}" alt="Image">
+  <h3>{{pokemon?.name | titlecase}}</h3>
+  <ul class="list-group w-100 my-2">
+    <li class="list-group-item">
+      <span class="font-bold">Tipo:</span> <span *ngFor="let item of pokemon?.types">{{item.type.name}}</span>
+    </li>
+    <li class="list-group-item">
+      <span class="font-bold">Altura:</span> {{pokemon?.height}}
+    </li>
+    <li class="list-group-item">
+      <span class="font-bold">Peso:</span> {{pokemon?.weight}} lbs.
+    </li>
+    <li class="list-group-item">
+      <span class="font-bold">Experiencia Base: </span>{{pokemon?.base_experience}}
+    </li>
+  </ul>
+</div>
