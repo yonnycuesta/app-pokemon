@@ -6,6 +6,21 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
+## Características
+
+- Lista de las características principales del proyecto
+- 1. Listado de Pokémon con Paginación
+- 2. Visualización de Detalles del Pokémon:
+- 3. Filtro de Pokémon:
+
+
+## Instalación
+
+1. Clona el repositorio: `git clone https://github.com/yonnycuesta/app-pokemon.git`
+2. Navega al directorio del proyecto: `cd app-pokemon`
+3. Instala las dependencias: `npm install`
+
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
