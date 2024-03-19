@@ -105,7 +105,6 @@ export class HomeComponent implements OnInit {
    */
   public filterByType(type: string) {
     this.filteredPokemons = this.pokemons.filter((pokemon) => {
-      console.log(pokemon);
       if (pokemon) {
         return pokemon.types.includes(type);
       }

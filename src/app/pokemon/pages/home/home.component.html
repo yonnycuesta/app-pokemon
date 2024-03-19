@@ -20,13 +20,6 @@
         @if (showFilters) {
         <div>
           <ul class="list-group d-block filters">
-            <!-- <li class="list-group-item">
-              <label for="generation" class="col-2">Generación:</label>
-              <select class="form-control col-4" id="generation">
-                <option value="0">Todas</option>
-                <option *ngFor="let gen of generations" [value]="gen.id">{{gen.name}}</option>
-              </select>
-            </li> -->
             <li class="list-group-item item_type">
               <label for="type" class="col-2">Tipo:</label>
               @for (t of pokeTypes; track t.id) {
@@ -57,9 +50,12 @@
             previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
         </div>
         }@else {
-        <p>
-          Pokemon no encontrado.
-        </p>
+        <div class="col-9 mx-1">
+          <div class="alert alert-warning" role="alert">
+            <i class="fas fa-exclamation-triangle"></i>
+            No hay pokemons para mostrar.
+          </div>
+        </div>
         }
       </div>
     </div>
